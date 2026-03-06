@@ -1,7 +1,7 @@
 const jugador = {
     nombre: "Ragnar",
     oro: 1000,
-    nivel: 12,
+    nivel: 14,
     VIP: false
 };
 
@@ -26,13 +26,16 @@ if (jugador.VIP) {
 if (jugador.nivel < pocion.nivelRequerido) {
     document.writeln("Eres muy novato para usar sal y consigue exp")
 } else {
-    if (jugador.oro >= precioFinal) {
-        document.writeln("Compra exitosa. Te quedan " + (jugador.oro - precioFinal) + " monedas")
+    let respuesta = confirm("¿Deseas comprar " + pocion.nombre + " por " + precioFinal + " de oro?");
+    if (respuesta && jugador.oro >= precioFinal) {
+        jugador.oro -= precioFinal;
+        document.writeln("Compra exitosa. Te quedan " + jugador.oro + " monedas")
+    } else if (!respuesta) {
+        document.writeln("Compra cancelada.")
     } else {
         document.writeln("No tienes suficiente oro")
     }
 }
-
 
 
 
